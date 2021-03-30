@@ -1,0 +1,27 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx:1.16.1
+    ports:
+      - "80:80"
+    volumes: 
+      - ./docker/nginx/:/etc/nginx/conf.d/
+      - ./src:/var/www/html
+  phpfpm:
+    build: ./docker/phpfpm
+    volumes: 
+      - ./src:/var/www/html
+    expose: 
+      - 9000
+  mysql:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: under
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    ports: 
+          - 3306:3306
+    volumes: 
+      - ./docker/mysql:/var/lib/mysql/
