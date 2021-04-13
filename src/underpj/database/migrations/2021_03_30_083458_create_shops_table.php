@@ -14,7 +14,17 @@ class CreateShopsTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->string('address');
+            $table->tinyInteger('gender');
+            $table->string('shop_alias');
+            $table->string('banking_account_number');
+            $table->string('banking_account_name');
+            $table->string('banking_name');
+            $table->float('price_service_max');  // Số tiền tối đa chi trả cho hệ thống trên 1 sản phẩm
+            $table->double('price_service_percent'); // Phần trăm giá sản phẩm trả cho hệ thống
+            $table->tinyInteger('is_delete');
             $table->timestamps();
         });
     }

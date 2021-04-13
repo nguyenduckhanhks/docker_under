@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ctvs extends Model
 {
-    use HasFactory;
+    const FEMALE = 0;
+    const MALE = 1;
+
+    protected $fillable = [
+        'user_id', 'address', 'gender', 'trademark', 'banking_account_name', 'banking_account_number', 'banking_name', 'is_delete'
+    ];
 }

@@ -14,7 +14,15 @@ class CreateCtvsTable extends Migration
     public function up()
     {
         Schema::create('ctvs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('user_id');
+            $table->string('address');
+            $table->tinyInteger('gender');
+            $table->string('trademark')->nullable();
+            $table->string('banking_account_number');
+            $table->string('banking_account_name');
+            $table->string('banking_name');
+            $table->tinyInteger('is_delete');
             $table->timestamps();
         });
     }
