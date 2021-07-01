@@ -3,10 +3,17 @@ services:
   nginx:
     image: nginx:1.16.1
     ports:
-      - "80:80"
+      - "8081:80"
     volumes: 
       - ./docker/nginx/:/etc/nginx/conf.d/
       - ./src:/var/www/html
+  apache:
+    image: httpd:2.4
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src:/usr/local/apache2/htdocs/
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
   phpfpm:
     build: ./docker/phpfpm
     volumes: 
